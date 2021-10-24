@@ -1,0 +1,409 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Tailwind css -->
+     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+      <!-- font awesome  -->
+      <script src="https://kit.fontawesome.com/2a31eefe4b.js" crossorigin="anonymous"></script>
+
+    <title>Zenith Bank</title>
+</head>
+<body class="">
+
+    <style>
+		/* Always set the map height explicitly to define the size of the div
+			* element that contains the map. */
+		#map {
+		height: 100%;
+		}
+
+		/* Optional: Makes the sample page fill the window. */
+		html,
+		body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		}
+	</style>
+
+        <div class="shadow p-3">
+            <div class="flex justify-between">
+            <div class="">
+                <p class="text-xs">9:45 pm</p>
+                <div class="my-4 text-red-900" id="opensidenav">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="" >
+                    <div class="flex text-xs">
+                        <i class="fa mx-1 fa-signal" aria-hidden="true"></i>
+                        <i class="fa mx-1 fa-wifi" aria-hidden="true"></i>
+                        <i class="fa mx-1 fa-battery" aria-hidden="true"></i>
+                    </div>
+                    <div class="my-4 text-right text-red-900">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <div><h1 class="text-red-900">Zenith Picker</h1></div>
+  </div>
+
+  <div id="map"></div>
+
+
+        <!-- <footer class="my-16"> -->
+            <div class="p-4 text-center text-red-900 fixed bottom-0 bg-white">
+                <div class="flex">
+                    <div class="mx-4">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <p class="text-sm">Home</p>
+                    </div>
+    
+                    <div class="mx-4">
+                        <i class="fa fa-history" aria-hidden="true"></i>
+                        <p class="text-sm">History</p>
+                    </div>
+    
+                    <div class="mx-4">
+                        <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                        <p class="text-sm">Cards</p>
+                    </div>
+    
+                    <div class="mx-4">
+                        <i class="fa fa-gear" aria-hidden="true"></i>
+                        <p class="text-sm">Settings</p>
+                    </div>
+                </div>
+            </div>
+        </footer> 
+
+        <div  style="position: fixed ;top: 0; z-index: 999; width: 48.5vh; background-color: rgb(255, 4, 4); background-image:linear-gradient( rgba(255, 0, 0, 0.45),rgba(255, 0, 0, 0.45)), url('https://th.bing.com/th/id/R.fe523570a0d654aef3cf86006460127b?rik=KgsxHo7uXmG69A&pid=ImgRaw&r=0'); background-position: top;background-size: contain;left: -20rem;" id="sidebar">
+            <div class="text-white float-right text-lighter p-4" id="close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <div class="pt-20 pl-5 pb-2">
+                <h1 class="text-white font-bold">EKONG EMMANUEL</h1>
+            </div>
+            <div class="bg-white h-auto">
+                <ul class="p-2">
+                    <li class="pl-3 flex pt-1"><i class="fa fa-copy mt-1 mr-2" aria-hidden="true"></i>Overview</li>
+                    <li class="pl-3 flex pt-4"><i class="fa fa-retweet mt-1 mr-2" aria-hidden="true"></i>Transfer</li>
+                    <li class=" pl-3 flex pt-4"><i class="fa fa-mobile-phone mt-1 mr-2" aria-hidden="true"></i>Airtime Recharge</li>
+                    <li class="pl-3 flex pt-4"><i class="fa fa-clipboard mt-1 mr-2" aria-hidden="true"></i>Bills Payment</li>
+                    <li class="pl-3 flex pt-4"><i class="fa fa-sticky-note mt-1 mr-2" aria-hidden="true"></i>Recurring Payment</li>
+                    <li class="pl-3 flex pt-4"><i class="fa fa-calendar mt-1 mr-2" aria-hidden="true"></i>Checks and</li>
+                    <li class="pl-3 flex pt-4"><i class="fa fa-plane mt-1 mr-2" aria-hidden="true"></i>Travel</li>
+                    <li class="pl-3 flex pt-4"><i class="fa fa-envelope mt-1 mr-2" aria-hidden="true"></i>Messages</li>
+                    <li class="pl-3 flex pt-4"><i class="fa fa-gear mt-1 mr-2" aria-hidden="true"></i>Settings</li>
+                    <a href="map.html"><li class="pl-3 flex pt-4"><i class="fa fa-map-marker mt-1 mr-2" aria-hidden="true"></i>Zenith near you</li></a>
+                    <li class="pl-3 flex pt-4"><i class="fa fa-exclamation-circle mt-1 mr-2" aria-hidden="true"></i>Logout</li>
+                </ul>
+            </div>
+        </div>
+       
+        <script>
+        // let map;
+        // const coords = { lat: 	 6.4474 , lng:  3.3903 }
+    
+        // function initMap() {
+        // map = new google.maps.Map(document.getElementById("map"), {
+        //     center: coords,
+        //     zoom: 10,
+        // });
+
+        // addmarker({ lat:6.4474 , lng:  3.3903 })
+        // // addmarker({ lat:6.6058 , lng:  3.3491 })
+        // // // addmarker(coords)
+    
+        // function addmarker(coords) {
+        //     new google.maps.Marker({
+        //     position : coords,
+        //     map: map,
+        //     icon:'zenith-bank-seeklogo.com.svg',
+        //     // label: "Zenith Bank"
+        // })
+        // }
+        // }
+
+        function initMap() {
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 3,
+            center: { lat: 6.4474, lng:  3.3903 },
+            styles: [
+      { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+      { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+      { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+      {
+        featureType: "administrative.locality",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#d59563" }],
+      },
+      {
+        featureType: "poi",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#d59563" }],
+      },
+      {
+        featureType: "poi.park",
+        elementType: "geometry",
+        stylers: [{ color: "#263c3f" }],
+      },
+      {
+        featureType: "poi.park",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#6b9a76" }],
+      },
+      {
+        featureType: "road",
+        elementType: "geometry",
+        stylers: [{ color: "#38414e" }],
+      },
+      {
+        featureType: "road",
+        elementType: "geometry.stroke",
+        stylers: [{ color: "#212a37" }],
+      },
+      {
+        featureType: "road",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#9ca5b3" }],
+      },
+      {
+        featureType: "road.highway",
+        elementType: "geometry",
+        stylers: [{ color: "#746855" }],
+      },
+      {
+        featureType: "road.highway",
+        elementType: "geometry.stroke",
+        stylers: [{ color: "#1f2835" }],
+      },
+      {
+        featureType: "road.highway",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#f3d19c" }],
+      },
+      {
+        featureType: "transit",
+        elementType: "geometry",
+        stylers: [{ color: "#2f3948" }],
+      },
+      {
+        featureType: "transit.station",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#d59563" }],
+      },
+      {
+        featureType: "water",
+        elementType: "geometry",
+        stylers: [{ color: "#17263c" }],
+      },
+      {
+        featureType: "water",
+        elementType: "labels.text.fill",
+        stylers: [{ color: "#515c6d" }],
+      },
+      {
+        featureType: "water",
+        elementType: "labels.text.stroke",
+        stylers: [{ color: "#17263c" }],
+      },
+    ],
+        });
+        const bounds = {
+            north: 6.4500,
+            south: 6.4399,
+            east: 3.3999,
+            west: 3.3320,
+        };
+
+   
+        const svgMarker = {
+            path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+            fillColor: "yellow",
+            fillOpacity: 1,
+            strokeWeight: 0,
+            rotation: 0,
+            scale: 2,
+            anchor: new google.maps.Point(15, 30),
+        };
+
+        const mymarker = new google.maps.Marker({
+        position:{ lat: 6.4474, lng:  3.3903 },
+        map: map,
+        icon: svgMarker
+        });
+        // Display the area between the location southWest and northEast.
+        map.fitBounds(bounds);
+
+  // Add 5 markers to map at random locations.
+  // For each of these markers, give them a title with their index, and when
+  // they are clicked they should open an infowindow with text from a secret
+  // message.
+  const secretMessages = [`<div class="p-2 text-sm">
+                <div class="flex justify-between">
+                    <p class='pr-2'>location</p>
+                    <p class="font-bold">Ikeja</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>People</p>
+                    <p class="font-bold">34</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate in</p>
+                    <p class="font-bold">15/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate out</p>
+                    <p class="font-bold text-red-500">5/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Delay</p>
+                    <p class="font-bold ">1hr 15min</p>
+                </div>
+            </div>`, `<div class="p-2 text-sm">
+                <div class="flex justify-between">
+                    <p class='pr-2'>location</p>
+                    <p class="font-bold">Sagamu</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>People</p>
+                    <p class="font-bold">20</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate in</p>
+                    <p class="font-bold">14/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate out</p>
+                    <p class="font-bold text-green-500">8/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Delay</p>
+                    <p class="font-bold ">1hr 15min</p>
+                </div>
+            </div>`,`<div class="p-2 text-sm">
+                <div class="flex justify-between">
+                    <p class='pr-2'>location</p>
+                    <p class="font-bold">Ikeja</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>People</p>
+                    <p class="font-bold">2</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate in</p>
+                    <p class="font-bold">3/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate out</p>
+                    <p class="font-bold text-green-500">3/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Delay</p>
+                    <p class="font-bold ">30 min</p>
+                </div>
+            </div>`,`<div class="p-2 text-sm">
+                <div class="flex justify-between">
+                    <p class='pr-2'>location</p>
+                    <p class="font-bold">Eluse</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>People</p>
+                    <p class="font-bold">41</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate in</p>
+                    <p class="font-bold">25/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate out</p>
+                    <p class="font-bold text-red-500">9/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Delay</p>
+                    <p class="font-bold ">3hr 41min</p>
+                </div>
+            </div>`,`<div class="p-2 text-sm">
+                <div class="flex justify-between">
+                    <p class='pr-2'>location</p>
+                    <p class="font-bold">Arepo</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>People</p>
+                    <p class="font-bold">12</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate in</p>
+                    <p class="font-bold">9/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Rate out</p>
+                    <p class="font-bold text-green-500">5/hr</p>
+                </div>
+                <div class="flex justify-between">
+                    <p>Delay</p>
+                    <p class="font-bold ">1hr</p>
+                </div>
+            </div>` ];
+  const lngSpan = bounds.east - bounds.west;
+  const latSpan = bounds.north - bounds.south;
+
+  for (let i = 0; i < secretMessages.length; ++i) {
+    const marker = new google.maps.Marker({
+      position: {
+        lat: bounds.south + latSpan * Math.random(),
+        lng: bounds.west + lngSpan * Math.random(),
+      },
+      map: map,
+    //  icon:'zenith-bank-seeklogo.com.svg'
+    });
+
+    attachSecretMessage(marker, secretMessages[i]);
+  }
+}
+
+// Attaches an info window to a marker with the provided message. When the
+// marker is clicked, the info window will open with the secret message.
+function attachSecretMessage(marker, secretMessage) {
+  const infowindow = new google.maps.InfoWindow({
+    content: secretMessage,
+  });
+
+  marker.addListener("click", () => {
+    infowindow.open(marker.get("map"), marker);
+  });
+}
+
+  // $('#close').click(()=>{
+            //     $('#sidebar').fadeToggle()
+            // })
+
+            const closesidenav = document.getElementById('close')
+            const sidebar = document.getElementById('sidebar')
+            const opensidenav = document.getElementById('opensidenav')
+
+            closesidenav.addEventListener('click', ()=>{
+                sidebar.style.left = "-19rem"
+                sidebar.style.transition = "ease-in 0.3s"
+            } )
+
+            opensidenav.addEventListener('click', ()=>{
+                sidebar.style.left = "0rem"
+                sidebar.style.transition = "ease-in 0.3s"
+            } )
+    
+    </script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDluH_xeV-KPxmKZPbsmvFnwf3NFPc3pSM&callback=initMap&v=weekly"
+    async
+  ></script>
+       
+</body>
+</html>
